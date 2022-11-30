@@ -36,7 +36,7 @@ public class UserController {
     @GetMapping("/login")
     public Result login(@RequestParam String username, @RequestParam String password, HttpServletResponse servletResponse){
 
-        User user = userService.login(username, password);
+        User user = userService.loginInfo(username, password);
         if (!StringUtils.isEmpty(user)){
 
             //根据用户信息创建token，（登录成功的处理逻辑）

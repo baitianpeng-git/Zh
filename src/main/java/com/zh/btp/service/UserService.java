@@ -16,6 +16,6 @@ import javax.annotation.Resource;
  */
 public interface UserService extends IService<User> {
 
-    User login(String username,String password);
+    User loginInfo(String username,String password);
 
 }
