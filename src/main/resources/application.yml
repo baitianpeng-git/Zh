@@ -36,19 +36,31 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
-  rabbitmq:
-    host: 127.0.0.1  #mq服务器ip,默认为localhost
-    port: 5672          #mq服务器port,默认为5672
-    username: guest     #mq服务器username,默认为gust
-    password: guest     #mq服务器password,默认为guest
-    virtual-host: /
-    #publisher-confirms: true
-    #消费消息的时候,就必须手动ack确认,不然消息永远还在队列中
-    listener:
-      simple:
-        acknowledge-mode: manual
-      direct:
-        acknowledge-mode: manual
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 100ms
+
+
+#  rabbitmq:
+#    host: 127.0.0.1  #mq服务器ip,默认为localhost
+#    port: 5672          #mq服务器port,默认为5672
+#    username: guest     #mq服务器username,默认为gust
+#    password: guest     #mq服务器password,默认为guest
+#    virtual-host: /
+#    #publisher-confirms: true
+#    #消费消息的时候,就必须手动ack确认,不然消息永远还在队列中
+#    listener:
+#      simple:
+#        acknowledge-mode: manual
+#      direct:
+#        acknowledge-mode: manual
 
 mybatis-plus:
   configuration:

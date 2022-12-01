@@ -21,16 +21,16 @@ public class RabbitConsumer {
      * @param channel
      * @throws IOException
      */
-    @RabbitListener(queues = "normal_queue")
-    public void normal_queue(List<String> list, Message message, Channel channel) throws IOException {
-        log.info("正常队列收到消息时间为:{},收到的消息内容为:{}", LocalDateTime.now(), list.toString());
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
-
-    @RabbitListener(queues = "dead_queue")
-    public void myDealy(List<String> list, Message message, Channel channel) throws IOException {
-        log.info("死信收到消息时间为:{},收到的消息内容为:{}", LocalDateTime.now(), list.toString());
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
+//    @RabbitListener(queues = "normal_queue")
+//    public void normal_queue(List<String> list, Message message, Channel channel) throws IOException {
+//        log.info("正常队列收到消息时间为:{},收到的消息内容为:{}", LocalDateTime.now(), list.toString());
+//        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+//    }
+//
+//    @RabbitListener(queues = "dead_queue")
+//    public void myDealy(List<String> list, Message message, Channel channel) throws IOException {
+//        log.info("死信收到消息时间为:{},收到的消息内容为:{}", LocalDateTime.now(), list.toString());
+//        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+//    }
 }
 

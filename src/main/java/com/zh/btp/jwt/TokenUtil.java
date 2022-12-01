@@ -2,6 +2,7 @@ package com.zh.btp.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.zh.btp.entity.User;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ public class TokenUtil {
     //密钥
     public static final String SECRET = "youareapig??shabixiangpojie?";
     //过期时间:秒
-    public static final int EXPIRE = 300;
+    public static final int EXPIRE = 1800;
     /**
      * 生成Token
      */
@@ -46,7 +47,15 @@ public class TokenUtil {
      */
     public static DecodedJWT verify(String token) {
         //如果有任何验证异常，此处都会抛出异常 我们需要在拦截器调用这个方法，捕获异常，然后返回错误信息给前端
-        DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC256(SECRET)).build().verify(token);
+        DecodedJWT decodedJWT = null;
+        try {
+            decodedJWT = JWT.require(Algorithm.HMAC256(SECRET)).build().verify(token);
+        } catch (JWTVerificationException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        System.out.println(decodedJWT);
         return decodedJWT;
     }
 

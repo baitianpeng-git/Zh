@@ -7,6 +7,8 @@ import com.zh.btp.base.Result;
 import com.zh.btp.base.StatusCode;
 import com.zh.btp.entity.Score;
 import com.zh.btp.service.ScoreService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.List;
  * @author btp
  * @since 2022-11-23
  */
+@Api("score")
 @RestController
 @RequestMapping("score")
 @Slf4j
@@ -30,6 +33,7 @@ public class ScoreController {
     ScoreService scoreService;
 
     @GetMapping("/list")
+    @ApiModelProperty("查询score全部数据")
     public Result list(){
         List<Score> list = scoreService.list();
         Score byId = scoreService.getById(10);
